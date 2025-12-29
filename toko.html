@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Toko Alat Tulis</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="loadProducts(); updateCart();">
+
+<div id="popup" class="popup">Barang ditambahkan</div>
+
+<nav class="navbar">
+    <div class="nav-left">
+        <a href="#">Toko</a>
+    </div>
+    <div class="nav-right">
+        <input type="text" id="search" placeholder="Cari barang..." onkeyup="searchItem()">
+    </div>
+</nav>
+
+<h1>Toko Alat Tulis Kerja</h1>
+
+<div class="main">
+
+    <div class="box left">
+        <h2>Daftar Barang</h2>
+        <table id="productTable">
+            <tr>
+                <th>Barang</th>
+                <th>Harga</th>
+                <th>Aksi</th>
+            </tr>
+        </table>
+    </div>
+
+    <div class="box right">
+        <h2>Keranjang</h2>
+        <table id="cartTable">
+            <tr>
+                <th>Barang</th>
+                <th>Qty</th>
+                <th>Subtotal</th>
+            </tr>
+        </table>
+
+        <div class="total-box">
+            Total: Rp <span id="total">0</span>
+        </div>
+
+        <button class="pay-btn" onclick="bayar()" style="width:100%;margin-top:10px;">
+            Bayar
+        </button>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
