@@ -13,7 +13,8 @@ var products = [
     { nama: "Papan Tulis", harga: 30000 },
     { nama: "Kertas Folio", harga: 1000 }, 
     { nama: "Kertas HVS", harga: 1000 }, 
-    { nama: "Kertas Kambing", harga: 1000 }
+    { nama: "Kertas Kambing", harga: 1000 },
+    { nama: "Pisau", harga: 10000 }
 ];
 
 var cart = JSON.parse(localStorage.getItem("cart")) || [];
