@@ -1,20 +1,20 @@
 var products = [
-    { nama: "Buku", harga: 10000 },
-    { nama: "Pensil", harga: 3000 },
-    { nama: "Pulpen", harga: 5000 },
-    { nama: "Penghapus", harga: 2000 },
-    { nama: "Spidol", harga: 7000 },
-    { nama: "Binder", harga: 45000 },
-    { nama: "Penggaris", harga: 5000 },
-    { nama: "Lakban", harga: 10000 }, 
-    { nama: "Stabilo Warna", harga: 7500 },
-    { nama: "Map (Folder)", harga: 5000 }, 
-    { nama: "Gunting", harga: 6000 }, 
-    { nama: "Papan Tulis", harga: 30000 },
-    { nama: "Kertas Folio", harga: 1000 }, 
-    { nama: "Kertas HVS", harga: 1000 }, 
-    { nama: "Kertas Kambing", harga: 1000 },
-    { nama: "Pisau", harga: 10000 }
+    { nama: "Buku", harga: 10000, gambar: "images/buku.png"},
+    { nama: "Pensil", harga: 3000, gambar: "images/pensil.png"},
+    { nama: "Pulpen", harga: 5000, gambar: "images/pulpen.png"},
+    { nama: "Penghapus", harga: 2000, gambar: "images/penghapus.png"},
+    { nama: "Spidol", harga: 7000, gambar: "images/spidol.png"},
+    { nama: "Binder", harga: 45000, gambar: "images/binder.png"},
+    { nama: "Penggaris", harga: 5000, gambar: "images/penggaris.png"},
+    { nama: "Lakban", harga: 10000, gambar: "images/lakban.png"}, 
+    { nama: "Stabilo Warna", harga: 7500, gambar: "images/stabilo.png"},
+    { nama: "Map (Folder)", harga: 5000, gambar: "images/mapfolder.png"}, 
+    { nama: "Gunting", harga: 6000, gambar: "images/gunting.png"}, 
+    { nama: "Papan Tulis", harga: 30000, gambar: "images/papantulis.png"},
+    { nama: "Kertas Folio", harga: 1000, gambar: "images/kertasfolio.png"}, 
+    { nama: "Kertas HVS", harga: 1000, gambar: "images/kertashvs.png"}, 
+    { nama: "Kertas Kambing", harga: 1000, gambar: "images/kertaskambing.png"},
+    { nama: "Pisau", harga: 10000, gambar: "images/pisau.png"}
 ];
 
 var cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -26,39 +26,46 @@ function saveCart() {
 
 // LOAD PRODUK
 function loadProducts() {
-    var table = document.getElementById("productTable");
-    table.innerHTML =
-        "<tr><th>Barang</th><th>Harga</th><th>Aksi</th></tr>";
+    var list = document.getElementById("productList");
+    list.innerHTML = "";
 
     for (var i = 0; i < products.length; i++) {
-        table.innerHTML +=
-            "<tr>" +
-            "<td>" + products[i].nama + "</td>" +
-            "<td>Rp " + products[i].harga + "</td>" +
-            "<td><button onclick=\"addToCart('" + products[i].nama + "')\">Tambah</button></td>" +
-            "</tr>";
+        list.innerHTML += `
+            <div class="product-card">
+                <img src="${products[i].gambar}" class="product-img">
+                <h3>${products[i].nama}</h3>
+                <p class="price">Rp ${products[i].harga}</p>
+                <button onclick="addToCart('${products[i].nama}')">
+                    Tambah
+                </button>
+            </div>
+        `;
     }
 }
+
 
 // SEARCH
 function searchItem() {
     var keyword = document.getElementById("search").value.toLowerCase();
-    var table = document.getElementById("productTable");
-
-    table.innerHTML =
-        "<tr><th>Barang</th><th>Harga</th><th>Aksi</th></tr>";
+    var list = document.getElementById("productList");
+    list.innerHTML = "";
 
     for (var i = 0; i < products.length; i++) {
-        if (products[i].nama.toLowerCase().indexOf(keyword) !== -1) {
-            table.innerHTML +=
-                "<tr>" +
-                "<td>" + products[i].nama + "</td>" +
-                "<td>Rp " + products[i].harga + "</td>" +
-                "<td><button onclick=\"addToCart('" + products[i].nama + "')\">Tambah</button></td>" +
-                "</tr>";
+        if (products[i].nama.toLowerCase().includes(keyword)) {
+            list.innerHTML += `
+                <div class="product-card">
+                    <img src="${products[i].gambar}" class="product-img">
+                    <h3>${products[i].nama}</h3>
+                    <p class="price">Rp ${products[i].harga}</p>
+                    <button onclick="addToCart('${products[i].nama}')">
+                        Tambah
+                    </button>
+                </div>
+            `;
         }
     }
 }
+
 
 // TAMBAH
 function addToCart(nama) {
@@ -167,4 +174,10 @@ function showPopup(text) {
     setTimeout(function () {
         popup.className = "popup";
     }, 2000);
+}
+
+function scrollToCart() {
+    document.querySelector(".right").scrollIntoView({
+        behavior: "smooth"
+    });
 }

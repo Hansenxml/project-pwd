@@ -12,26 +12,26 @@
 
 <nav class="navbar">
     <div class="nav-left">
-        <a href="#">Toko</a>
-    </div>
-    <div class="nav-right">
-        <input type="text" id="search" placeholder="Cari barang..." onkeyup="searchItem()">
+        <a href="index.html">Beranda</a>
+        <a href="toko.html">Toko</a>
+        <a href="kontak.html">Kontak</a>
     </div>
 </nav>
 
 <h1>Toko Alat Tulis Kerja</h1>
 
+<div class="search-box">
+    <input type="text"
+           id="search"
+           placeholder="Cari barang..."
+           onkeyup="searchItem()">
+</div>
+
 <div class="main">
 
     <div class="box left">
         <h2>Daftar Barang</h2>
-        <table id="productTable">
-            <tr>
-                <th>Barang</th>
-                <th>Harga</th>
-                <th>Aksi</th>
-            </tr>
-        </table>
+        <div id="productList" class="product-grid"></div>
     </div>
 
     <div class="box right">
