@@ -158,7 +158,7 @@ function bayar() {
     if (uang < total) {
         alert("Uang kurang Rp " + (total - uang));
     } else {
-        alert("Berhasil!\nKembalian Rp " + (uang - total));
+        alert("Pembayaran Berhasil!\nKembalian Rp " + (uang - total));
         cart = [];
         saveCart();
         updateCart();
