@@ -14,7 +14,9 @@ var products = [
     { nama: "Kertas Folio", harga: 1000, gambar: "images/kertasfolio.png"}, 
     { nama: "Kertas HVS", harga: 1000, gambar: "images/kertashvs.png"}, 
     { nama: "Kertas Kambing", harga: 1000, gambar: "images/kertaskambing.png"},
-    { nama: "Pisau", harga: 10000, gambar: "images/pisau.png"}
+    { nama: "stepless", harga: 21000, gambar: "images/stepless.jpg"},
+    { nama: "Penghapus Papan Tulis", harga: 8000, gambar: "images/pemghapus papan tulis.jpg"},
+    { nama: "Isi stepless", harga: 2000, gambar: "images/isi stepless.jpg"},
 ];
 
 var cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -156,9 +158,9 @@ function bayar() {
     uang = parseInt(uang);
 
     if (uang < total) {
-        alert("Uang kurang Rp " + (total - uang));
+        alert("Uang Anda kurang Rp " + (total - uang));
     } else {
-        alert("Berhasil!\nKembalian Rp " + (uang - total));
+        alert("Pembayaran Berhasil!\nKembalian Rp " + (uang - total));
         cart = [];
         saveCart();
         updateCart();
